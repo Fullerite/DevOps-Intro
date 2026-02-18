@@ -1,0 +1,25 @@
+name: Lab 3 CI Workflow
+on:
+  push:
+    branches: [ main, feature/lab3 ]
+  workflow_dispatch:
+jobs:
+  system-info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Task 1 - Hello World
+        run: echo "The pipeline is working"
+      - name: Task 2 - System Information
+        run: |
+          echo "=== OS Information ==="
+          uname -a
+          echo "=== CPU Information ==="
+          nproc
+          lscpu | grep "Model name"
+          echo "=== Memory Information ==="
+          free -h
+          echo "=== Disk Space ==="
+          df -h
+          echo "=== GitHub Runner Details ==="
+          echo "Runner OS: ${{ runner.os }}"
+          echo "Workflow: ${{ github.workflow }}"
